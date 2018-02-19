@@ -1,0 +1,46 @@
+basePath: /api
+consumes:
+    - application/json
+definitions:
+    StatusResponseEntity:
+        properties:
+            status:
+                type: string
+                enum:
+                    - healthy
+                    - unhealthy
+            name:
+                type: string
+            version:
+                type: string
+            id:
+                type: string
+        required:
+            - status
+            - name
+            - version
+            - id
+        type: object
+info:
+    title: ts-service-boilerplate
+    version: 1.0.0
+    license:
+        name: MIT
+paths:
+    /status:
+        get:
+            operationId: GetCurrent
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/StatusResponseEntity'
+            security: []
+            parameters: []
+produces:
+    - application/json
+swagger: '2.0'
+securityDefinitions: {}
+host: 'localhost:3000'
