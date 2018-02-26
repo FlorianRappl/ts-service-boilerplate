@@ -21,6 +21,19 @@ definitions:
             - version
             - id
         type: object
+    ErrorResponseEntity:
+        properties:
+            code:
+                type: number
+                format: double
+            message:
+                type: string
+            data:
+                type: object
+        required:
+            - code
+            - message
+        type: object
 info:
     title: ts-service-boilerplate
     version: 1.0.0
@@ -37,6 +50,18 @@ paths:
                     description: Ok
                     schema:
                         $ref: '#/definitions/StatusResponseEntity'
+            security: []
+            parameters: []
+    /error:
+        get:
+            operationId: GetError
+            produces:
+                - application/json
+            responses:
+                '200':
+                    description: Ok
+                    schema:
+                        $ref: '#/definitions/ErrorResponseEntity'
             security: []
             parameters: []
 produces:

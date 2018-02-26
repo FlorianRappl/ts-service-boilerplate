@@ -1,6 +1,7 @@
 /* tslint:disable */
 import { Controller, ValidateParam, FieldErrors, ValidateError, TsoaRoute } from 'tsoa';
 import { StatusController } from './controllers/statusController';
+import { ErrorController } from './controllers/errorController';
 
 const models: TsoaRoute.Models = {
   "StatusResponseEntity": {
@@ -9,6 +10,13 @@ const models: TsoaRoute.Models = {
       "name": { "dataType": "string", "required": true },
       "version": { "dataType": "string", "required": true },
       "id": { "dataType": "string", "required": true },
+    },
+  },
+  "ErrorResponseEntity": {
+    "properties": {
+      "code": { "dataType": "double", "required": true },
+      "message": { "dataType": "string", "required": true },
+      "data": { "dataType": "any" },
     },
   },
 };
@@ -30,6 +38,24 @@ export function RegisterRoutes(app: any) {
 
 
       const promise = controller.getCurrent.apply(controller, validatedArgs);
+      promiseHandler(controller, promise, response, next);
+    });
+  app.get('/api/error',
+    function(request: any, response: any, next: any) {
+      const args = {
+      };
+
+      let validatedArgs: any[] = [];
+      try {
+        validatedArgs = getValidatedArgs(args, request);
+      } catch (err) {
+        return next(err);
+      }
+
+      const controller = new ErrorController();
+
+
+      const promise = controller.getError.apply(controller, validatedArgs);
       promiseHandler(controller, promise, response, next);
     });
 
