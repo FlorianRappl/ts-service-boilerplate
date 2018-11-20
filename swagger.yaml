@@ -30,6 +30,7 @@ definitions:
                 type: string
             data:
                 type: object
+                x-nullable: true
         required:
             - code
             - message

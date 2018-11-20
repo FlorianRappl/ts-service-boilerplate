@@ -25,17 +25,17 @@
     "@types/uuid": "^3.4.3",
     "@types/yamljs": "^0.2.30",
     "jest": "^22.3.0",
-    "nodemon": "^1.15.1",
-    "ts-jest": "^22.0.4",
+    "nodemon": "^1.18.6",
+    "ts-jest": "^23.10.4",
     "ts-node": "^4.1.0",
     "typescript": "^2.7.2"
   },
   "dependencies": {
     "express": "^4.16.2",
     "pm2": "^2.10.0",
-    "request": "^2.83.0",
+    "request": "^2.88.0",
     "swagger-ui-express": "^2.0.15",
-    "tsoa": "^2.1.1",
+    "tsoa": "^2.2.5",
     "uuid": "^3.2.1",
     "yamljs": "^0.3.0"
   }
